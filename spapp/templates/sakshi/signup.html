@@ -1,0 +1,110 @@
+{% extends 'sakshi/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ======= Hero Section ======= -->
+<section id="contact" class="contact" class="d-flex align-items-center justify-content-center">
+    <div class="container" data-aos="fade-up">
+
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="250">
+            <h1><span>Sign</span> Up</h1>
+        </div>
+
+        <div class="row gy-4 mt-2 justify-content-center" data-aos="zoom-in" data-aos-delay="350">
+
+            <div class="col-lg-4 mt-lg-2">
+
+                <div>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissible fade show w-100" role="alert">
+                        {{message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    <div class="card-body">
+                        <form method="POST" class="needs-validation">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="first_name" style="color: #ffffff;">First Name</label>
+                                <input id="first_name" type="text" class="form-control" name="first_name" tabindex="1" required
+                                    autofocus>
+                                <div class="invalid-feedback">
+                                    Please fill in your first name
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="last_name" style="color: #ffffff;">Last Name</label>
+                                <input id="last_name" type="text" class="form-control" name="last_name" tabindex="1"
+                                    autofocus>
+                                <div class="invalid-feedback">
+                                    Please fill in your last name
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" style="color: #ffffff;">Email</label>
+                                <input id="email" type="text" class="form-control" name="email" tabindex="1" required
+                                    autofocus>
+                                <div class="invalid-feedback">
+                                    Please fill in your email
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mobile" style="color: #ffffff;">Mobile Number</label>
+                                <input id="mobile" type="text" class="form-control" name="mobile" tabindex="1" required
+                                    autofocus>
+                                <div class="invalid-feedback">
+                                    Please fill in your mobile number
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="d-block">
+                                    <label for="password" class="control-label" style="color: #ffffff;">Password</label>
+                                </div>
+                                <input id="password" type="password" class="form-control" name="password" tabindex="2"
+                                    required>
+                                <div class="invalid-feedback">
+                                    please fill in your password
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="d-block">
+                                    <label for="cpassword" class="control-label" style="color: #ffffff;">Confirm Password</label>
+                                </div>
+                                <input id="cpassword" type="cpassword" class="form-control" name="cpassword" tabindex="2"
+                                    required>
+                                <div class="invalid-feedback">
+                                    please fill in your confirm password
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                                    Signup
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="mt-5 text-muted text-center">
+                    Already have an account? <a href="{% url 'login' %}">Log In</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section><!-- End Hero -->
+
+{% endblock %}

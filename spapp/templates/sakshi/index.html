@@ -1,0 +1,566 @@
+{% extends 'sakshi/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center justify-content-center">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="250">
+                <div class="col-xl-8 col-lg-8">
+                    <h1>Let<span>'</span>s <span>Capture</span></h1>
+                    <h1>The Priceless <span>Memories</span></h1>
+                    <h2>You Embrace, We Enhance, You Appreciate</h2>
+                </div>
+            </div>
+
+            <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="350">
+                <div class="col-xl-2 col-md-4">
+                    <div class="icon-box">
+                        <i class="bi bi-camera"></i>
+                        <h3><a href="">Photography</a></h3>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4">
+                    <div class="icon-box">
+                        <i class="bi bi-camera-reels"></i>
+                        <h3><a href="">Videography</a></h3>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4">
+                    <div class="icon-box">
+                        <i class="bi bi-images"></i>
+                        <h3><a href="">Album</a></h3>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4">
+                    <div class="icon-box">
+                        <i class="bi bi-vinyl"></i>
+                        <h3><a href="">Highlights</a></h3>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4">
+                    <div class="icon-box">
+                        <i class="bi bi-postcard-heart"></i>
+                        <h3><a href="">Invitations</a></h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= Quote Section ======= -->
+        <section id="quote" class="quote">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="250">
+                        <img src="{{topQuote.album.url}}" class="position-absolute img-fluid w-100 h-100" style="object-fit: cover;" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right"
+                        data-aos-delay="250">
+                        <h2 class="text-center mt-3" style="letter-spacing: 0;">Moment.  Memory.  Miracle.</h2>
+                        <p class="text-center">
+                            The journey is never about a shot but the unsaid stories within the shooting experience.The
+                            quest within is of something which is ‘epiphanic’.
+                        </p>
+                        <p class="text-center">
+                            As an artist whose medium of bringing the art to the world is an intent of
+                            compartmentalising
+                            the moments, I am all about things which are not seen by the naked eye but a soul which
+                            feels
+                            what cannot be said through any other medium.
+                        </p>
+                        <p class="text-center">
+                            The world is material but I am still looking for a metaphor in it. Anything which can allow
+                            me
+                            the space to create what is not felt is the domain I am looking for.
+                        </p>
+                        <h5 class="text-center">People. Photographs. Perfection.</h5>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Quote Section -->
+
+        <!-- ======= Weddings Section ======= -->
+        <section id="services" class="services">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Weddings</h2>
+                    <p>Check our Weddings</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-arrow-through-heart"></i></div>
+                            <h4><a href="">Wedding1</a></h4>
+                            <p>Pre-Wedding, Lipd-Up, Highlights, candid, cinematic, traditional, sangeet, ring
+                                ceremoney,
+                                haldi, mehandi, sagaai, etc</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+                        data-aos-delay="200">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-person-video3"></i></div>
+                            <h4><a href="">Wedding2</a></h4>
+                            <p>Conference, meetings, product launch, brand promotions, advertisment, concerts, annual
+                                celebration, fest etc</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+                        data-aos-delay="300">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bx bx-slideshow"></i></div>
+                            <h4><a href="">Wedding3</a></h4>
+                            <p>birthday, party, roka, post wedding, Lipd-Up, inogration, baby shower, festival
+                                celebration
+                                etc</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Weddings Section -->
+
+        <!-- ======= Collage Section ======= -->
+        <section id="collage" class="collage">
+            <div class="container" data-aos="zoom-in">
+
+                <div class="collage-slider swiper">
+                    <div class="swiper-wrapper align-items-center">
+                        <div class="swiper-slide"><img src="{% static 'img/collage/s1.jpg' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/collage/s2.jpg' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/collage/s3.jpg' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/collage/s4.jpg' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/collage/s5.jpg' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/collage/s6.jpg' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/collage/s7.jpeg' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/collage/s8.jpg' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/collage/s9.jpg' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/collage/s10.jpg' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/collage/s11.jpg' %}" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                    <!-- <div class="swiper-pagination"></div> -->
+                </div>
+
+            </div>
+        </section><!-- End Collage Section -->
+
+        <!-- ======= Pre-Weddings Section ======= -->
+        <section id="services" class="services">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Pre-Weddings</h2>
+                    <p>Check our Pre-Weddings</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-arrow-through-heart"></i></div>
+                            <h4><a href="">Pre-Wedding1</a></h4>
+                            <p>Pre-Wedding, Lipd-Up, Highlights, candid, cinematic, traditional, sangeet, ring
+                                ceremoney,
+                                haldi, mehandi, sagaai, etc</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+                        data-aos-delay="200">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-person-video3"></i></div>
+                            <h4><a href="">Pre-Wedding2</a></h4>
+                            <p>Conference, meetings, product launch, brand promotions, advertisment, concerts, annual
+                                celebration, fest etc</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+                        data-aos-delay="300">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bx bx-slideshow"></i></div>
+                            <h4><a href="">Pre-Wedding3</a></h4>
+                            <p>birthday, party, roka, post wedding, Lipd-Up, inogration, baby shower, festival
+                                celebration
+                                etc</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Pre-Weddings Section -->
+
+        <!-- ======= Clients Section ======= -->
+        <section id="clients" class="clients">
+            <div class="container" data-aos="zoom-in">
+
+                <div class="clients-slider swiper">
+                    <div class="swiper-wrapper align-items-center">
+                        <div class="swiper-slide"><img src="{% static 'img/clients/IMG_0307.png' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/clients/IMG_0312.png' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/clients/IMG_0705.png' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/clients/IMG_0706.png' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/clients/MS5D3123.png' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/clients/MS5D3148.png' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/clients/client-7.png' %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/clients/client-8.png' %}" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                    <!-- <div class="swiper-pagination"></div> -->
+                </div>
+
+            </div>
+        </section><!-- End Clients Section -->
+
+        <!-- ======= Features Section ======= -->
+        <!-- <section id="features" class="features">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row">
+        <div class="image col-lg-6" style='background-image: url("assets/img/features.jpg");' data-aos="fade-right"></div>
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+          <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+            <i class="bx bx-receipt"></i>
+            <h4>Photography</h4>
+            <p>It's an art of capturing the rendom pictures of lovely moments and represent in the form of images</p>
+          </div>
+          <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+            <i class="bx bx-cube-alt"></i>
+            <h4>Videography</h4>
+            <p>It's an art of shoot the memories in friction of seconds</p>
+          </div>
+          <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+            <i class="bx bx-images"></i>
+            <h4>Album</h4>
+            <p>It's a collection of number of static moments</p>
+          </div>
+          <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+            <i class="bx bx-shield"></i>
+            <h4>Highlights</h4>
+            <p>It's a flash mob of full wedding. It gives a wedding touch in a few minutes</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section> -->
+        <!-- End Features Section -->
+
+        <!-- ======= Cta Section ======= -->
+        <section id="cta" class="cta d-flex align-items-center justify-content-center" style="background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)), url('{{reachUs.album.url}}') fixed center center; background-size: cover;">
+            <div class="container" data-aos="zoom-in">
+
+                <div class="text-center">
+                    <h3>Reach Us</h3>
+                    <p style="text-transform:capitalize; letter-spacing: 1px;">If you're looking for best photographers and cinematographers to capture your big beautiful memories.
+                        <br>And want to know more about us/services, then reach to us.</p>
+                    <a class="cta-btn" href="{% url 'contact' %}">Contact Us</a>
+                </div>
+
+            </div>
+        </section><!-- End Cta Section -->
+
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Portfolio</h2>
+                    <p>Check our Portfolio</p>
+                </div>
+
+                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="{% static 'img/portfolio/portfolio-1.jpg' %}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>App 1</h4>
+                                <p>App</p>
+                                <div class="portfolio-links">
+                                    <a href="{% static 'img/portfolio/portfolio-1.jpg' %}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                        <div class="portfolio-wrap">
+                            <img src="{% static 'img/portfolio/portfolio-2.jpg' %}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>Web 3</h4>
+                                <p>Web</p>
+                                <div class="portfolio-links">
+                                    <a href="{% static 'img/portfolio/portfolio-2.jpg' %}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="{% static 'img/portfolio/portfolio-3.jpg' %}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>App 2</h4>
+                                <p>App</p>
+                                <div class="portfolio-links">
+                                    <a href="{% static 'img/portfolio/portfolio-3.jpg' %}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                        <div class="portfolio-wrap">
+                            <img src="{% static 'img/portfolio/portfolio-4.jpg' %}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>Card 2</h4>
+                                <p>Card</p>
+                                <div class="portfolio-links">
+                                    <a href="{% static 'img/portfolio/portfolio-4.jpg' %}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                        <div class="portfolio-wrap">
+                            <img src="{% static 'img/portfolio/portfolio-5.jpg' %}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>Web 2</h4>
+                                <p>Web</p>
+                                <div class="portfolio-links">
+                                    <a href="{% static 'img/portfolio/portfolio-5.jpg' %}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="{% static 'img/portfolio/portfolio-6.jpg' %}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>App 3</h4>
+                                <p>App</p>
+                                <div class="portfolio-links">
+                                    <a href="{% static 'img/portfolio/portfolio-6.jpg' %}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                        <div class="portfolio-wrap">
+                            <img src="{% static 'img/portfolio/portfolio-7.jpg' %}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>Card 1</h4>
+                                <p>Card</p>
+                                <div class="portfolio-links">
+                                    <a href="{% static 'img/portfolio/portfolio-7.jpg' %}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                        <div class="portfolio-wrap">
+                            <img src="{% static 'img/portfolio/portfolio-8.jpg' %}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>Card 3</h4>
+                                <p>Card</p>
+                                <div class="portfolio-links">
+                                    <a href="{% static 'img/portfolio/portfolio-8.jpg' %}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                        <div class="portfolio-wrap">
+                            <img src="{% static 'img/portfolio/portfolio-9.jpg' %}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>Web 3</h4>
+                                <p>Web</p>
+                                <div class="portfolio-links">
+                                    <a href="{% static 'img/portfolio/portfolio-9.jpg' %}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Portfolio Section -->
+
+        <!-- ======= Quote Section ======= -->
+        <section id="quote" class="quote">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row">
+                    <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right" data-aos-delay="250">
+                        <img src="{{bottomQuote.album.url}}" class="position-absolute img-fluid px-4 w-100 h-100" style="object-fit: cover;" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-1 order-lg-2 content" data-aos="fade-left"
+                        data-aos-delay="250">
+                        <h2 class="text-center mt-4 fs-2">You Feel. I Focus. We Frame.</h2>
+                        <p class="text-center px-3 mt-4">
+                            A wedding is a validation coupled with the showcase of Love inclusive of 
+                            various events with exotic venues, food, guests, dresses, jewellery and so on- 
+                            What if it could never be recorded?
+                        </p>
+                        <p class="text-center px-3">
+                            A chronology of a couple’s journey where they vow together to be One.
+                        </p>
+                        <h5 class="text-center fs-5 mt-4 mb-4">We Are Creating Fiction Out Of Reality.</h5>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Quote Section -->
+
+        <!-- ======= Testimonials Section ======= -->
+        <section id="testimonials" class="testimonials d-flex align-items-center justify-content-center" style="background: url('{{ testimonial.album.url }}') center; background-size: cover;">
+            <div class="container" data-aos="zoom-in">
+
+                <div class="section-title">
+                    <h2 style="color: rgb(184, 184, 184);">Testimonials</h2>
+                    <p style="color: #ffc451;">Check our Testimonials</p>
+                </div>
+
+                <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <img src="{% static 'img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
+                                <h3>Saul Goodman</h3>
+                                <h4>Ceo &amp; Founder</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit
+                                    rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam,
+                                    risus at semper.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div><!-- End testimonial item -->
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <img src="{% static 'img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
+                                <h3>Sara Wilsson</h3>
+                                <h4>Designer</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid
+                                    cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet
+                                    legam anim culpa.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div><!-- End testimonial item -->
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <img src="{% static 'img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
+                                <h3>Jena Karlis</h3>
+                                <h4>Store Owner</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem
+                                    veniam
+                                    duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div><!-- End testimonial item -->
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <img src="{% static 'img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
+                                <h3>Matt Brandon</h3>
+                                <h4>Freelancer</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim
+                                    fugiat
+                                    minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore
+                                    labore illum veniam.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div><!-- End testimonial item -->
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <img src="{% static 'img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
+                                <h3>John Larson</h3>
+                                <h4>Entrepreneur</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster
+                                    veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam
+                                    culpa fore nisi cillum quid.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div><!-- End testimonial item -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+        </section><!-- End Testimonials Section -->
+
+    </main><!-- End #main -->
+
+
+{% endblock %}

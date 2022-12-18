@@ -1,0 +1,199 @@
+<div>
+    <div class="card-body">
+    {% for comment in comments %}
+    <div class="comments" style="padding: 1px;">
+        <p>Name: {{ comment.name }}</p>
+        <p style="word-break: break-all;"></p>Comment: {{ comment.content | linebreaksbr }}</p>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+
+<div>
+    <div class="card-body">
+    {% if new_comment %}
+    <div class="alert alert-success" role="alert">
+        Your have commented successfully!!
+    </div>
+    {% else %}
+    <h4>Leave your comment here</h4>
+    <form method="post" style="margin-top: 1.3em;">
+        {{ comment_form.as_p }}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+    </form>
+    {% endif %}
+    </div>
+</div>
+
+
+
+<div class="alert alert-success" role="alert">
+    {% if not post.comments.all %}
+        <h4>No Comment Yet!!</h4>
+    {% else %}
+        <div class="border-0 border-start border-2 ps-2" id="{{comment.id}}">
+            {% for comment in comments %}
+            <div class="mt-3">
+                <strong>{{comment.name}}</strong> 
+                {% if  comment.parent.name %} to <strong>{{comment.parent.name}}</strong>{% endif %}
+                <div class="border p-2 rounded">
+                    <p>{{comment.content}}&emsp;&emsp;
+                    <button class="btn btn-primary btn-sm" onclick="handleReply({{comment.id}})">Reply</button></p>
+                    
+                </div>
+            </div>
+            class="replyform{{comment.id}} disply"
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<div class="card-body">
+    {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+            Your have commented successfully!!
+        </div>
+    {% else %}
+        <h4>Leave your comment here</h4>
+        <div id="replyform{{comment.id}}" style="display:none"></div>
+            <form method="post" action="{% url 'post_detail' slug=post.slug %}" class="mt-3">
+                {{comment_form.as_p}}
+                <input type="hidden" name="post_id" value="{{post.id}}">
+                <input type="hidden" name="parent" value="{{comment.id}}">
+                <input type="hidden" name="post_url" value="{{post_url}}">
+                {% csrf_token %}
+                <div>
+                    <button type="button" onclick="handleCancel({{comment.id}})" class="btn btn-light border btn-sm">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                </div>
+            </form>
+    {% endif %}
+</div>
+
+<article class="post">
+    <time class="date">
+        {{ post.published_date }}
+    </time>
+    <img src="{{ post.image.url }}" class="rounded featured-image-list" alt="{{post.title}}">
+    <h2><a href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a></h2>
+    <h6>Post Category: <a href="{% url 'category_detail' slug=post.category.slug %}">{{ post.category }}</a></h6>
+    <p style="word-break: break-all;">{{ post.text|linebreaksbr|truncatechars:211 }}</p>
+</article>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card" style="width: 30rem;">
+            <div class="card-body">
+                <img class="card-img-top" src="{{ post.image.url }}" alt="{{post.title}}">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <h6>Post Category: <a href="{% url 'category_detail' slug=post.category.slug %}">{{ post.category }}</a></h6>
+                <time class="date">
+                    {{ post.published_date }}
+                </time>
+                <p class="card-text">{{ post.text|linebreaksbr|truncatechars:211 }}</p>
+                <a href="{% url 'post_detail' slug=post.slug %}" class="btn btn-primary">Read Post</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="bg-white border rounded-5">
+    <section class="w-100 p-4 d-flex justify-content-center pb-4">
+        <form style="width: 30rem;">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- First input -->
+                    <div class="form-outline col-mb-2">
+                        <label class="form-label" for="first_name">First Name<span class="text-danger">*</span></label>
+                        {{form.first_name}}
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Last input -->
+                    <div class="form-outline mb-2">
+                        <label class="form-label" for="last_name">Last Name<span class="text-danger">*</span></label>
+                        {{form.last_name}}
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Email input -->
+                    <div class="form-outline mb-2">
+                        <label class="form-label" for="email">Email<span class="text-danger">*</span></label>
+                        {{form.email}}
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Mobile input -->
+                    <div class="form-outline mb-2">
+                        <label class="form-label" for="mobile">Mobile<span class="text-danger">*</span></label>
+                        {{form.mobile}}
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Username input -->
+                    <div class="form-outline mb-2">
+                        <label class="form-label" for="username">Username<span class="text-danger">*</span></label>
+                        {{form.username}}
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- City input -->
+                    <div class="form-outline mb-2">
+                        <label class="form-label" for="city">City<span class="text-danger">*</span></label>
+                        {{form.city}}
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Password1 input -->
+                    <div class="form-outline mb-2">
+                        <label class="form-label" for="form.password1">Password<span class="text-danger">*</span></label>
+                        {{form.password1}}
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Country input -->
+                    <div class="form-outline mb-2">
+                        <label class="form-label" for="country">Country<span class="text-danger">*</span></label>
+                        {{form.country}}
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Password2 input -->
+                    <div class="form-outline mb-2">
+                        <label class="form-label" for="form.password2">Confirm Password<span class="text-danger">*</span></label>
+                        {{form.password2}}
+                    </div>
+                </div>
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block mb-4">SignUp</button>
+
+                    <!-- Register buttons -->
+                    <div class="text-center">
+                        <p>Not a member? <a href="{% url 'login' %}">LogIn</a></p>
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                    </div>
+            </div>
+        </form>
+    </section>
+</div>
+{% endblock %}

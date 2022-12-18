@@ -1,0 +1,66 @@
+{% extends 'sakshi/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- ======= Hero Section ======= -->
+    <section id="pos" class="d-flex align-items-center justify-content-center">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="250">
+                <div class="col-xl-6 col-lg-8">
+                    <h1><span>{{ cat.name }}S</span></h1>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End Hero -->
+
+    <!-- ======= Post Section ======= -->
+    <section id="post" class="post">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row post-container" data-aos="fade-up" data-aos-delay="200">
+                {% for post in posts %}
+                <div class="col-lg-4 col-md-4 post-item filter-{{ post.category }}">
+                    <div class="post-wrap">
+                        <img src="{{ post.thumbnail.url }}" class="img-fluid" alt="{{ post.title }}">
+                        <div class="post-info">
+                            <h4><a href="{% url 'post_detail' slug=post.slug %}" title="Read More">{{ post.title }}</a></h4>
+                            <p><a href="{% url 'category_detail' slug=post.category.slug %}">{{ post.category }}</a></p>
+                            <div class="post-links">
+                                <a href="{{ post.thumbnail.url }}" data-gallery="postGallery"
+                                    class="post-lightbox" title="View Image"><i class="bx bx-plus"></i></a>
+                                <a href="{% url 'post_detail' slug=post.slug %}" title="Read More"><i class="bx bx-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section><!-- End Post Section -->
+
+
+
+    <!-- <article class="card w-100 p-4">
+        <h1>Category:- {{ cat.name }}</h1>
+        <h2>Total Posts:-({{ posts.count }})</h2>
+    </article>
+
+    {% for post in posts %}
+    <ul>
+        <article class="card w-100 p-4">
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+            <h2><a href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a></h2>
+            <p style="word-break: break-all;">{{ post.text|linebreaksbr|truncatechars:211 }}</p>
+        </article>
+    </ul>
+    {% endfor %} -->
+
+{% endblock %}

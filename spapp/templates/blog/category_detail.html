@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+<article class="card w-100 p-4">
+    <h1>Categories:- {{ cat.slug }}</h1>
+    <h2>Total Posts:-({{ posts.count }})</h2>
+</article>
+
+{% for post in posts %}
+    <ul>
+        <article class="card w-100 p-4">
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+            <h2><a href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a></h2>
+            <p style="word-break: break-all;">{{ post.text|linebreaksbr|truncatechars:211 }}</p>
+        </article>
+    </ul>        
+{% endfor %}
+{% endblock %}

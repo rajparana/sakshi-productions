@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+  <div class="bg-white border rounded-5">
+    <section class="w-100 p-4 d-flex justify-content pb-4">
+      <form method="POST" class="post-form" enctype="multipart/form-data">
+        <h2>Place Your Post Here</h2>
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-secondary">Save</button>
+      </form>
+    </section>
+  </div>
+{% endblock %}

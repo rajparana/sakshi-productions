@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Django Girls blog</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <script src="{% static 'js/main.js'%}"></script>
+
+    </head>
+    <body>
+        <header class="page-header">
+            <div class="container">
+
+
+
+                <h1><a href="/">Django Girls Blog</a><a>&emsp;&emsp;&emsp;</a><a href="">Polls</a></h1>
+                    
+                {% if user.is_authenticated %}
+                    <a href="{% url 'post_new' %}" class="log">
+                        {% include './icons/file-earmark-plus.svg' %}
+                    </a>
+                    <p class="log">&emsp14;Hello!&emsp14;{{ user.first_name }}&emsp;</p> <p><a style="border: .5px solid rgb(179, 179, 179)" href="{% url 'logout' %}" class="user">&emsp14;Log Out&emsp14;</a></p>
+                {% else %}
+                    <p class="log"></p>
+                    <a style="border: .5px solid rgb(179, 179, 179)" href="{% url 'login' %}" class="user">&emsp14;Log In&emsp14;</a><a>&emsp14;</a>
+                    <a style="border: .5px solid rgb(179, 179, 179)" href="{% url 'signup' %}" class="user">&emsp14;Sign Up&emsp14;</a>
+                {% endif %}
+                
+            </div>
+        </header>
+        <main class="container">
+            <div class="row">
+                <div class="col">
+                    {% block content %}
+
+                    {% endblock %}
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

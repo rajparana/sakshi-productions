@@ -1,0 +1,173 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="bg-white border rounded-5">
+<section class="w-100 p-4 d-flex justify-content-center pb-4">
+<form style="width: 35rem;" method="POST">
+    {% csrf_token %}
+        <h2>SignUp Form</h2>
+        <div class="row">
+            <div class="col-md-12">
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                                <strong>{{ field|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group position-relative">
+                    <label>First name <span class="text-danger">*</span></label>
+                    {{form.first_name}}
+                </div>
+                {% if form.first_name.errors %}
+                    {% for error in form.first_name.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group position-relative">
+                    <label>Last name <span class="text-danger">*</span></label>
+                    {{form.last_name}}
+                </div>
+                {% if form.last_name.errors %}
+                    {% for error in form.last_name.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group position-relative">
+                    <label>Your Email <span class="text-danger">*</span></label>
+                    {{form.email}}
+                </div>
+                {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group position-relative">
+                    <label>Username <span class="text-danger">*</span></label>
+                    {{form.username}}
+                </div>
+                {% if form.username.errors %}
+                    {% for error in form.username.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group position-relative">
+                    <label>Mobile <span class="text-danger">*</span></label>
+                    {{form.mobile}}
+                </div>
+                {% if form.mobile.errors %}
+                    {% for error in form.mobile.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group position-relative">
+                    <label>City <span class="text-danger">*</span></label>
+                    {{form.city}}
+                </div>
+                {% if form.city.errors %}
+                    {% for error in form.city.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group position-relative">
+                    <label>Country <span class="text-danger">*</span></label>
+                    {{form.country}}
+                </div>
+                {% if form.country.errors %}
+                    {% for error in form.country.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group position-relative">
+                    <label>Password <span class="text-danger">*</span></label>
+                    {{form.password1}}
+                </div>
+                {% if form.password1.errors %}
+                    {% for error in form.password1.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group position-relative">
+                    <label>Confirm Password <span class="text-danger">*</span></label>
+                    {{form.password2}}
+                </div>
+                {% if form.password2.errors %}
+                    {% for error in form.password2.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="col-md-12">
+                <br>
+            </div>
+
+            <div class="col-md-3">
+                <button class="btn btn-primary w-100" type="submit" >SignUp</button>
+            </div>
+
+            <div class="mx-auto">
+                <p class="mb-0 mt-3"><small class="text-dark mr-2">Already have an account ?</small> <a href="{% url 'login' %}" class="text-dark font-weight-bold">LogIn</a></p>
+            </div>
+
+        </div>
+</form>
+</section>
+</div>    
+{% endblock %}

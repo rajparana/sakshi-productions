@@ -1,0 +1,52 @@
+{% extends 'sakshi/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ======= Hero Section ======= -->
+<section id="pos-det" class="d-flex align-items-center justify-content-center"
+    style="background: url('{{ post.thumbnail.url }}') top center;">
+    <div class="container" data-aos="fade-up">
+
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="250">
+            <div class="col-xl-6 col-lg-8">
+                <h1><span>{{ post.title }}</span></h1>
+                <h6 class="fs-6" style="color: rgb(221, 221, 221); font-weight:700;">{{ post.category }} | {{
+                    post.destination }}</h6>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- End Hero -->
+
+<!-- ======= Post Section ======= -->
+<section id="post" class="post">
+    <div class="container" data-aos="fade-up">
+        <div class="row mb-5" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-md-12">
+                <iframe id="ytplayer" type="text/html" width="100%" height="500"
+                    src="https://www.youtube.com/embed/{{ post.youtube }}">
+                </iframe>
+            </div>
+        </div>
+        
+        <div class="row mt-5 justify-content-center">
+            <div class="col-md-12">
+                <p class="text-center" style="word-break: break-all;">{{ post.text|safe|linebreaksbr }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            {% for image in album %}
+            <div class="col-4 py-4">
+                <img class="img-fluid" style="object-fit: cover;" src="{{ image.album.url }}" alt="Image">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section><!-- End Post Section -->
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="bg-white border rounded-5">
+    <section class="w-100 p-4 d-flex justify-content-center pb-4">
+        <form style="width: 18rem;" method="POST">
+            {% csrf_token %}
+            <h2>LogIn Form</h2>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group position-relative">
+                        <label>Username <span class="text-danger">*</span></label>
+                        {{form.username}}
+                    </div>
+                </div>
+                
+                <div class="col-lg-12">
+                    <div class="form-group position-relative">
+                        <label>Password <span class="text-danger">*</span></label>
+                        {{form.password}}
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-0">
+                    <br>
+                    <button class="btn btn-primary w-100" type="submit">LogIn</button>
+                </div>
+
+                <div class="col-12 text-center">
+                    <p class="mb-0 mt-3"><small class="text-dark mr-2">Don't have an account ?</small> <a href="{% url 'signup' %}" class="text-dark font-weight-bold">SignUp</a></p>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+
+<div class="raw">
+    <div class="col-md-12">
+            <article class="post">
+                <aside class="actions">
+                    {% if user.is_authenticated %}
+                        <a class="btn btn-secondary" href="{% url 'post_edit' slug=post.slug %}">
+                            {% include './icons/pencil-fill.svg' %}
+                        </a>
+                    {% endif %}
+                </aside>
+                
+                {% if post.published_date %}
+                    <time class="date">
+                        {{ post.published_date }}
+                    </time>
+                {% endif %}
+                <div class="bg-white border rounded-5">
+                    <section class="w-100 p-4">
+                        <section class="d-flex justify-content-center pb-4">
+                            <div class="image">
+                                <img class="resize" src="{{ post.thumbnail.url }}" alt="{{post.title}}">&emsp14;
+                            </div>
+                            <form style="width: 60rem;" method="POST">
+                                <h2>{{ post.title }}</h2>
+                                <h6>Post Category: <a href="{% url 'category_detail' slug=post.category.slug %}">{{ post.category }}</a></h6>
+                            </form>
+                        </section>
+                            <img class="featuring" src="{{ post.image.url }}" class="rounded" alt="{{post.title}}">
+                        <p style="word-break: break-all;">{{ post.text|safe|linebreaksbr }}</p>
+
+                        <div><strong>Tags: </strong>
+                            {% for tag in post.tag.all %}
+                            <span style="border: .5px solid rgb(179, 179, 179)"><a href="{% url 'tag_detail' slug=tag.slug %}">{{ tag.name }}</a></span>
+                            {% endfor %}
+                            <br><br><br><br>
+                        </div>
+                        <div>
+                            
+                            <div class="card-body">
+                                {% if new_comment %}
+                                    <div class="alert alert-success" role="alert">
+                                        Your have Commented successfully!!
+                                    </div>
+                                {% else %}
+                                    <h4>Leave your comment here:</h4>
+                                    <form method="post" style="margin-top: 1.3em;">
+                                        {% csrf_token %}
+                                        {{ comment_form.as_p }}
+                                        <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            {% for comment in comments %}
+                                <div id="{{comment.id}}">
+                                    <div class="display-flex">
+                                        <strong>{{comment.name}}</strong>&emsp;
+                                        <a>{{comment.email}}</a>&emsp;
+                                        <button class="btn btn-primary btn-sm" onclick="handleReply({{comment.id}})">Reply</button>
+                                    </div>
+                                    <p>{{comment.content}}</p>
+
+                                    <div id="reply-form-container-{{comment.id}}" style="display:none">
+                                    
+                                        <form method="post" action="{% url 'post_detail' slug=post.slug %}" class="mt-3">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="post_id" value="{{post.id}}">
+                                            <input type="hidden" name="parent_id" value="{{comment.id}}">
+                                            {{comment_form.as_p}}
+                                            <div>
+                                                <button type="button" onclick="handleCancel({{comment.id}})" class="btn btn-light border btn-sm">Cancel</button>
+                                                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="ms-5">
+                                    {% for reply in comment.replies.all %}
+                                        <div class="" id="{{comment.id}}">
+                                            <div class="margin-left">
+                                                <strong>{{reply.name}}</strong> 
+                                                {% if reply.parent.name %} replied to <strong>{{reply.parent.name}}</strong>{% endif %}
+                                            </div>
+                                            <div class="">
+                                                <p>{{reply.content}}</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </section>
+                </div>        
+            </article>
+    </div>
+</div>
+{% endblock %}
