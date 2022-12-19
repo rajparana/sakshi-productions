@@ -6,16 +6,34 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.urls import reverse
-from .models import Post, Category, User, Album
+from .models import *
 from .forms import PostForm, SignUpForm, LogInForm
 
 def home(request):
     cats = Category.objects.all()
-    topQuote = Album.objects.filter(top_quote=True).last()
-    bottomQuote = Album.objects.filter(bottom_quote=True).last()
-    testimonial = Album.objects.filter(testimonial=True).last()
-    reachUs = Album.objects.filter(reach_us=True).last()
-    return render(request, 'sakshi/index.html', {'cats': cats, 'topQuote':topQuote, 'bottomQuote':bottomQuote, 'testimonial':testimonial, 'reachUs':reachUs})
+    topQuote = TopQuote.objects.filter(status='Active').last()
+    bottomQuote = BottomQuote.objects.filter(status='Active').last()
+    collageCrousels = CollageCrousel.objects.filter(status='Active').all()[:11]
+    slideCrousels = SlideCrousel.objects.filter(status='Active').all()[:11]
+    weddings = Post.objects.filter(category__name='Wedding', published_date__lte=timezone.now(), status='Active').order_by('published_date')
+    preWeddings = Post.objects.filter(category__name='Pre-Wedding', published_date__lte=timezone.now(), status='Active').order_by('published_date')
+    reach = Reach.objects.filter(status='Active').last()
+    testimonialCover = Testimonial.objects.filter(status='Hidden').last()
+    testimonials = Testimonial.objects.filter(status='Active').all()
+
+    context = {
+        'cats': cats,
+        'topQuote': topQuote,
+        'bottomQuote': bottomQuote,
+        'collageCrousels': collageCrousels,
+        'slideCrousels': slideCrousels,
+        'weddings': weddings,
+        'preWeddings': preWeddings,
+        'reach': reach,
+        'testimonialCover': testimonialCover,
+        'testimonials': testimonials,
+        }
+    return render(request, 'sakshi/index.html', context)
 
 def log_out(request):
     logout(request)
@@ -155,11 +173,27 @@ def portfolio(request):
 
 def contact(request):
     cats = Category.objects.all()
-    return render(request, 'sakshi/contact.html', {'cats': cats})
+    contactUs = Contact.objects.filter(status='Active').last()
+    return render(request, 'sakshi/contact.html', {'cats': cats, 'contactUs': contactUs})
 
 def about(request):
     cats = Category.objects.all()
-    return render(request, 'sakshi/about.html', {'cats': cats})
+    topAbout = TopAbout.objects.filter(status='Active').last()
+    midAbout= MidAbout.objects.filter(status='Active').last()
+    bottomAbout = BottomAbout.objects.filter(status='Active').last()
+    aboutQuote = AboutQuote.objects.filter(status='Active').last()
+    services = Service.objects.filter(status='Active').all()[:6]
+    expertises = Expertise.objects.filter(status='Active').all()[:4]
+    context = {
+        'cats': cats,
+        'topAbout': topAbout,
+        'midAbout': midAbout,
+        'bottomAbout': bottomAbout,
+        'aboutQuote': aboutQuote,
+        'services': services,
+        'expertises': expertises,
+        }
+    return render(request, 'sakshi/about.html', context)
 
 # def tag(request, slug):
 #     rfr = Tag.objects.filter(slug=slug).last()

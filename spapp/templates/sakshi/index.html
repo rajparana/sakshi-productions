@@ -59,28 +59,11 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="250">
-                        <img src="{{topQuote.album.url}}" class="position-absolute img-fluid w-100 h-100" style="object-fit: cover;" alt="">
+                        <img src="{{topQuote.image.url}}" class="position-absolute img-fluid w-100 h-100" style="object-fit: cover;" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right"
                         data-aos-delay="250">
-                        <h2 class="text-center mt-3" style="letter-spacing: 0;">Moment.  Memory.  Miracle.</h2>
-                        <p class="text-center">
-                            The journey is never about a shot but the unsaid stories within the shooting experience.The
-                            quest within is of something which is ‘epiphanic’.
-                        </p>
-                        <p class="text-center">
-                            As an artist whose medium of bringing the art to the world is an intent of
-                            compartmentalising
-                            the moments, I am all about things which are not seen by the naked eye but a soul which
-                            feels
-                            what cannot be said through any other medium.
-                        </p>
-                        <p class="text-center">
-                            The world is material but I am still looking for a metaphor in it. Anything which can allow
-                            me
-                            the space to create what is not felt is the domain I am looking for.
-                        </p>
-                        <h5 class="text-center">People. Photographs. Perfection.</h5>
+                        <p>{{topQuote.text|safe}}</p>
                     </div>
                 </div>
 
@@ -88,45 +71,30 @@
         </section><!-- End Quote Section -->
 
         <!-- ======= Weddings Section ======= -->
-        <section id="services" class="services">
+        <section id="weddings" class="weddings">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Weddings</h2>
-                    <p>Check our Weddings</p>
+                    <h2><a href="{% url 'category_detail' slug='wedding' %}">Weddings</a></h2>
+                    <p><a href="{% url 'category_detail' slug='wedding' %}">Check our Weddings</a></p>
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-arrow-through-heart"></i></div>
-                            <h4><a href="">Wedding1</a></h4>
-                            <p>Pre-Wedding, Lipd-Up, Highlights, candid, cinematic, traditional, sangeet, ring
-                                ceremoney,
-                                haldi, mehandi, sagaai, etc</p>
+                    {% for wedding in weddings %}
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="card card-box">
+                            <!-- <div class="icon"><i class="bi bi-arrow-through-heart"></i></div> -->
+                            <div class="position-relative h-100 mb-3">
+                                <img src="{{wedding.thumbnail.url}}" class="img-fluid w-100 h-100" style="object-fit: cover;" alt="">
+                            </div>
+                            <h4><a class="p-3" href="{% url 'post_detail' slug=wedding.slug %}">{{wedding.title}}</a></h4>
+                            <div class="d-flex justify-content-between">
+                                <p class="ms-4 mt-0">{{wedding.destination}}</p>
+                                <p class="mt-3 mb-1"><a class="p-3 mt-5" href="{% url 'post_detail' slug=wedding.slug %}">View Post >>></a></p>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                        data-aos-delay="200">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-person-video3"></i></div>
-                            <h4><a href="">Wedding2</a></h4>
-                            <p>Conference, meetings, product launch, brand promotions, advertisment, concerts, annual
-                                celebration, fest etc</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-                        data-aos-delay="300">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-slideshow"></i></div>
-                            <h4><a href="">Wedding3</a></h4>
-                            <p>birthday, party, roka, post wedding, Lipd-Up, inogration, baby shower, festival
-                                celebration
-                                etc</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
 
             </div>
@@ -138,28 +106,10 @@
 
                 <div class="collage-slider swiper">
                     <div class="swiper-wrapper align-items-center">
-                        <div class="swiper-slide"><img src="{% static 'img/collage/s1.jpg' %}" class="img-fluid" alt="">
+                        {% for collageCrousel in collageCrousels %}
+                        <div class="swiper-slide"><img src="{{collageCrousel.image.url}}" class="img-fluid" alt="">
                         </div>
-                        <div class="swiper-slide"><img src="{% static 'img/collage/s2.jpg' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/collage/s3.jpg' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/collage/s4.jpg' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/collage/s5.jpg' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/collage/s6.jpg' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/collage/s7.jpeg' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/collage/s8.jpg' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/collage/s9.jpg' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/collage/s10.jpg' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/collage/s11.jpg' %}" class="img-fluid" alt="">
-                        </div>
+                        {% endfor %}
                     </div>
                     <!-- <div class="swiper-pagination"></div> -->
                 </div>
@@ -168,45 +118,30 @@
         </section><!-- End Collage Section -->
 
         <!-- ======= Pre-Weddings Section ======= -->
-        <section id="services" class="services">
+        <section id="weddings" class="weddings">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Pre-Weddings</h2>
-                    <p>Check our Pre-Weddings</p>
+                    <h2><a href="{% url 'category_detail' slug='pre-wedding' %}">Pre-Weddings</a></h2>
+                    <p><a href="{% url 'category_detail' slug='pre-wedding' %}">Check our Pre-Weddings</a></p>
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-arrow-through-heart"></i></div>
-                            <h4><a href="">Pre-Wedding1</a></h4>
-                            <p>Pre-Wedding, Lipd-Up, Highlights, candid, cinematic, traditional, sangeet, ring
-                                ceremoney,
-                                haldi, mehandi, sagaai, etc</p>
+                    {% for preWedding in preWeddings %}
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="card card-box">
+                            <!-- <div class="icon"><i class="bi bi-arrow-through-heart"></i></div> -->
+                            <div class="position-relative h-100 mb-3">
+                                <img src="{{preWedding.thumbnail.url}}" class="img-fluid w-100 h-100" style="object-fit: cover;" alt="">
+                            </div>
+                            <h4><a class="p-3" href="{% url 'post_detail' slug=preWedding.slug %}">{{preWedding.title}}</a></h4>
+                            <div class="d-flex justify-content-between">
+                                <p class="ms-4 mt-0">{{preWedding.destination}}</p>
+                                <p class="mt-3 mb-1"><a class="p-3 mt-5" href="{% url 'post_detail' slug=preWedding.slug %}">View Post >>></a></p>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                        data-aos-delay="200">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-person-video3"></i></div>
-                            <h4><a href="">Pre-Wedding2</a></h4>
-                            <p>Conference, meetings, product launch, brand promotions, advertisment, concerts, annual
-                                celebration, fest etc</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-                        data-aos-delay="300">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-slideshow"></i></div>
-                            <h4><a href="">Pre-Wedding3</a></h4>
-                            <p>birthday, party, roka, post wedding, Lipd-Up, inogration, baby shower, festival
-                                celebration
-                                etc</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
 
             </div>
@@ -218,22 +153,10 @@
 
                 <div class="clients-slider swiper">
                     <div class="swiper-wrapper align-items-center">
-                        <div class="swiper-slide"><img src="{% static 'img/clients/IMG_0307.png' %}" class="img-fluid" alt="">
+                        {% for slideCrousel in slideCrousels %}
+                        <div class="swiper-slide"><img src="{{slideCrousel.image.url}}" class="img-fluid" alt="">
                         </div>
-                        <div class="swiper-slide"><img src="{% static 'img/clients/IMG_0312.png' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/clients/IMG_0705.png' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/clients/IMG_0706.png' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/clients/MS5D3123.png' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/clients/MS5D3148.png' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/clients/client-7.png' %}" class="img-fluid" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="{% static 'img/clients/client-8.png' %}" class="img-fluid" alt="">
-                        </div>
+                        {% endfor %}
                     </div>
                     <!-- <div class="swiper-pagination"></div> -->
                 </div>
@@ -276,14 +199,12 @@
         <!-- End Features Section -->
 
         <!-- ======= Cta Section ======= -->
-        <section id="cta" class="cta d-flex align-items-center justify-content-center" style="background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)), url('{{reachUs.album.url}}') fixed center center; background-size: cover;">
+        <section id="cta" class="cta d-flex align-items-center justify-content-center" style="background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)), url('{{reach.image.url}}') fixed center center; background-size: cover;">
             <div class="container" data-aos="zoom-in">
 
                 <div class="text-center">
-                    <h3>Reach Us</h3>
-                    <p style="text-transform:capitalize; letter-spacing: 1px;">If you're looking for best photographers and cinematographers to capture your big beautiful memories.
-                        <br>And want to know more about us/services, then reach to us.</p>
-                    <a class="cta-btn" href="{% url 'contact' %}">Contact Us</a>
+                    <p>{{reach.text|safe}}</p>
+                    <a class="cta-btn" href="{% url 'contact' %}">{{reach.button}}</a>
                 </div>
 
             </div>
@@ -446,20 +367,11 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right" data-aos-delay="250">
-                        <img src="{{bottomQuote.album.url}}" class="position-absolute img-fluid px-4 w-100 h-100" style="object-fit: cover;" alt="">
+                        <img src="{{bottomQuote.image.url}}" class="position-absolute img-fluid px-4 w-100 h-100" style="object-fit: cover;" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-1 order-lg-2 content" data-aos="fade-left"
                         data-aos-delay="250">
-                        <h2 class="text-center mt-4 fs-2">You Feel. I Focus. We Frame.</h2>
-                        <p class="text-center px-3 mt-4">
-                            A wedding is a validation coupled with the showcase of Love inclusive of 
-                            various events with exotic venues, food, guests, dresses, jewellery and so on- 
-                            What if it could never be recorded?
-                        </p>
-                        <p class="text-center px-3">
-                            A chronology of a couple’s journey where they vow together to be One.
-                        </p>
-                        <h5 class="text-center fs-5 mt-4 mb-4">We Are Creating Fiction Out Of Reality.</h5>
+                        <p>{{bottomQuote.text|safe}}</p>
                     </div>
                 </div>
 
@@ -467,7 +379,7 @@
         </section><!-- End Quote Section -->
 
         <!-- ======= Testimonials Section ======= -->
-        <section id="testimonials" class="testimonials d-flex align-items-center justify-content-center" style="background: url('{{ testimonial.album.url }}') center; background-size: cover;">
+        <section id="testimonials" class="testimonials d-flex align-items-center justify-content-center" style="background: url('{{ testimonialCover.image.url }}') center; background-size: cover;">
             <div class="container" data-aos="zoom-in">
 
                 <div class="section-title">
@@ -477,82 +389,20 @@
 
                 <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
                     <div class="swiper-wrapper">
-
+                        {% for testimonial in testimonials %}
                         <div class="swiper-slide">
                             <div class="testimonial-item">
-                                <img src="{% static 'img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
-                                <h3>Saul Goodman</h3>
-                                <h4>Ceo &amp; Founder</h4>
+                                <img src="{{testimonial.image.url}}" class="testimonial-img" alt="">
+                                <h3>{{testimonial.name}}</h3>
+                                <h4>{{testimonial.designation}}</h4>
                                 <p>
                                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit
-                                    rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam,
-                                    risus at semper.
+                                    {{testimonial.comment}}
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
                             </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <img src="{% static 'img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
-                                <h3>Sara Wilsson</h3>
-                                <h4>Designer</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid
-                                    cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet
-                                    legam anim culpa.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <img src="{% static 'img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
-                                <h3>Jena Karlis</h3>
-                                <h4>Store Owner</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem
-                                    veniam
-                                    duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <img src="{% static 'img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
-                                <h3>Matt Brandon</h3>
-                                <h4>Freelancer</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim
-                                    fugiat
-                                    minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore
-                                    labore illum veniam.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <img src="{% static 'img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
-                                <h3>John Larson</h3>
-                                <h4>Entrepreneur</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster
-                                    veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam
-                                    culpa fore nisi cillum quid.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div><!-- End testimonial item -->
+                        </div>
+                        {% endfor %}
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
