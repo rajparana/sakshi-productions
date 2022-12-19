@@ -7,23 +7,38 @@ from django.utils.safestring import mark_safe
 from ckeditor.fields import RichTextField
 
 
+status = [("Active", "Active"), ("Hidden", "Hidden"), ("Inactive", "Inactive"), ("Delete", "Delete")]
+
+
 class User(AbstractUser):
     email = models.EmailField(max_length=160, unique=True)
     mobile = models.CharField(max_length=180, null=True, unique=True)
     image = models.ImageField(upload_to='profile/')
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
 
     unique_together = ['email', 'username']
 
     def save(self, *args, **kwargs):
         self.username = self.email
+        self.published_date = timezone.now()
         super().save(*args, **kwargs)
 
     def __str__(self):
         return self.username
 
+
 class Category(models.Model):
     name = models.CharField(max_length=255)
     slug = AutoSlugField(populate_from='name', unique=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
+    
+    def save(self, *args, **kwargs):
+        self.published_date = timezone.now()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -40,6 +55,7 @@ class Post(models.Model):
     thumbnail = models.ImageField(upload_to='thumbnails/')
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
     
     def save(self, *args, **kwargs):
         self.published_date = timezone.now()
@@ -75,6 +91,7 @@ class Album(models.Model):
     head = models.BooleanField(default=False)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
     
     def save(self, *args, **kwargs):
         self.published_date = timezone.now()
@@ -90,4 +107,283 @@ class Album(models.Model):
     def album_preview(self):
         if self.album:
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.album.url))
+        return ""
+
+
+class TopQuote(models.Model):
+    image = models.ImageField(upload_to='top-quote/', blank=True, null=True)
+    text = RichTextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
+    
+    def save(self, *args, **kwargs):
+        self.published_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.text[:20]
+
+    @property
+    def top_quote_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
+        return ""
+
+
+class BottomQuote(models.Model):
+    image = models.ImageField(upload_to='bottom-quote/', blank=True, null=True)
+    text = RichTextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
+    
+    def save(self, *args, **kwargs):
+        self.published_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.text[:20]
+
+    @property
+    def bottom_quote_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
+        return ""
+
+
+class CollageCrousel(models.Model):
+    image = models.ImageField(upload_to='collage-crousel/', blank=True, null=True)
+    feature = models.BooleanField(default=False)
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
+    
+    def save(self, *args, **kwargs):
+        self.published_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.image.url
+
+    @property
+    def collage_crousel_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
+        return ""
+
+
+class SlideCrousel(models.Model):
+    image = models.ImageField(upload_to='slide-crousel/', blank=True, null=True)
+    feature = models.BooleanField(default=False)
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
+    
+    def save(self, *args, **kwargs):
+        self.published_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.image.url
+
+    @property
+    def slide_crousel_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
+        return ""
+
+
+class Reach(models.Model):
+    image = models.ImageField(upload_to='reach/', blank=True, null=True)
+    text = RichTextField()
+    button = models.CharField(max_length=40, null=True, blank=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
+    
+    def save(self, *args, **kwargs):
+        self.published_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.text[:20]
+
+    @property
+    def reach_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
+        return ""
+
+
+class Testimonial(models.Model):
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100, null=True, blank=False)
+    comment = models.TextField()
+    image = models.ImageField(upload_to='client/', blank=True, null=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
+    
+    def save(self, *args, **kwargs):
+        self.published_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def client_image_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
+        return ""
+
+
+class TopAbout(models.Model):
+    image = models.ImageField(upload_to='top-about/', blank=True, null=True)
+    text = RichTextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
+    
+    def save(self, *args, **kwargs):
+        self.published_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.text[:20]
+
+    @property
+    def top_about_image_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
+        return ""
+
+
+class MidAbout(models.Model):
+    image = models.ImageField(upload_to='mid-about/', blank=True, null=True)
+    text = RichTextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
+    
+    def save(self, *args, **kwargs):
+        self.published_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.text[:20]
+
+    @property
+    def mid_about_image_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
+        return ""
+
+
+class BottomAbout(models.Model):
+    image = models.ImageField(upload_to='bottom-about/', blank=True, null=True)
+    text = RichTextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
+    
+    def save(self, *args, **kwargs):
+        self.published_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.text[:20]
+
+    @property
+    def bottom_about_image_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
+        return ""
+
+
+class AboutQuote(models.Model):
+    image = models.ImageField(upload_to='about-quote/', blank=True, null=True)
+    text = RichTextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
+    
+    def save(self, *args, **kwargs):
+        self.published_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.text[:20]
+
+    @property
+    def bottom_about_image_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
+        return ""
+
+
+class Service(models.Model):
+    title = models.CharField(max_length=120)
+    text = models.TextField()
+    icon = models.CharField(max_length=200, null=True, blank=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
+    
+    def save(self, *args, **kwargs):
+        self.published_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+
+class Expertise(models.Model):
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='expertise/', blank=True, null=True)
+    instagram = models.CharField(max_length=280, null=True, blank=True)
+    facebook = models.CharField(max_length=280, null=True, blank=True)
+    twitter = models.CharField(max_length=280, null=True, blank=True)
+    linkedin = models.CharField(max_length=280, null=True, blank=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
+    
+    def save(self, *args, **kwargs):
+        self.published_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def bottom_about_image_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
+        return ""
+
+
+class Contact(models.Model):
+    email = models.EmailField()
+    call = models.CharField(max_length=25)
+    image = models.ImageField(upload_to='contact/', blank=True, null=True)
+    address = models.CharField(max_length=280)
+    location = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=status, default='Active')
+    
+    def save(self, *args, **kwargs):
+        self.published_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.email
+
+    @property
+    def bottom_about_image_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
         return ""

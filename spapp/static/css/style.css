@@ -560,8 +560,8 @@ h6 {
 #about1 {
   width: 100%;
   height: 100vh;
-  background: url("../img/about-hero.jpg") top center;
-  background-size: cover;
+  /* background: url("../img/about-hero.jpg") top center; */
+  /* background-size: cover; */
   position: relative;
 }
 
@@ -586,6 +586,15 @@ h6 {
   font-size: 37px;
   font-weight: 700;
   line-height: 64px;
+  color: #ffc451;;
+  /* font-family: "Open+Sans", sans-serif; */
+}
+
+#about1 h5 {
+  /* margin: 0; */
+  /* font-size: 37px; */
+  /* font-weight: 700; */
+  /* line-height: 64px; */
   color: #ffc451;;
   /* font-family: "Open+Sans", sans-serif; */
 }
@@ -632,8 +641,8 @@ h6 {
 #about2 {
   width: 100%;
   height: 65vh;
-  background: url("../img/about-hero.jpg") top center;
-  background-size: cover;
+  /* background: url("../img/about-hero.jpg") top center; */
+  /* background-size: cover; */
   position: relative;
 }
 
@@ -653,13 +662,13 @@ h6 {
   text-align: center;
 }
 
-#about2 h1 {
+#about2 h4 {
   margin: 0;
-  font-size: 44px;
-  font-weight: 700;
-  line-height: 64px;
+  /* font-size: 44px; */
+  /* font-weight: 700; */
+  /* line-height: 64px; */
   color: #ffc451;;
-  font-family: "Open+Sans", sans-serif;
+  /* font-family: "Open+Sans", sans-serif; */
 }
 
 #about2 span {
@@ -704,8 +713,8 @@ h6 {
 #about3 {
   width: 100%;
   height: 129vh;
-  background: url("../img/about-3.png") top center;
-  background-size: cover;
+  /* background: url("../img/about-3.png") top center; */
+  /* background-size: cover; */
   position: relative;
 }
 
@@ -725,13 +734,13 @@ h6 {
   text-align: center;
 }
 
-#about3 h1 {
-  margin: 0;
-  font-size: 44px;
-  font-weight: 700;
-  line-height: 64px;
+#about3 h4 {
+  /* margin: 0; */
+  /* font-size: 44px; */
+  /* font-weight: 700; */
+  /* line-height: 64px; */
   color: #ffc451;;
-  font-family: "Open+Sans", sans-serif;
+  /* font-family: "Open+Sans", sans-serif; */
 }
 
 #about3 span {
@@ -1011,7 +1020,85 @@ section {
   box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
   transform: translateY(-10px);
 }
+/* ---------------------------------------
+wedding
+------------------------------------------ */
+.weddings .card-box {
+  /* text-align: center; */
+  border: 1px solid #ebebeb;
+  /* padding: 80px 20px; */
+  transition: all ease-in-out 0.3s;
+  background: #fff;
+}
 
+.weddings .card-box .icon {
+  margin: 0 auto;
+  width: 64px;
+  height: 64px;
+  background: #ffc451;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.weddings .card-box .icon i {
+  color: #444444;
+  font-size: 28px;
+  transition: ease-in-out 0.3s;
+}
+
+.weddings .card-box h4 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 21px;
+}
+
+.weddings .card-box h4 a {
+  color: #444444;
+  transition: ease-in-out 0.3s;
+}
+
+.weddings .card-box h4 a:hover {
+  color: #ffc451;
+}
+.weddings .card-box p a {
+  color: #444444;
+  transition: ease-in-out 0.3s;
+}
+
+.weddings .card-box p a:hover {
+  color: #ffc451;
+}
+.weddings p a {
+  color: #444444;
+  transition: ease-in-out 0.3s;
+}
+
+.weddings p a:hover {
+  color: #ffc451;
+}
+.weddings h2 a {
+  color: #bbbbbb;
+  transition: ease-in-out 0.3s;
+}
+
+.weddings h2 a:hover {
+  color: #ffc451;
+}
+.weddings .card-box p {
+  line-height: 24px;
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.weddings .card-box:hover {
+  border-color: #fff;
+  box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+}
 /*--------------------------------------------------------------
 # Cta
 --------------------------------------------------------------*/
@@ -1658,7 +1745,7 @@ section {
 }
 
 .counts .image {
-  background: url("../img/number.png") center center no-repeat;
+  /* background: url("../img/number.png") center center no-repeat; */
   background-size: cover;
   min-height: 400px;
 }
@@ -1880,8 +1967,8 @@ section {
 #contact {
   width: 100%;
   height: auto;
-  background: url("../img/about-3.png") top center;
-  background-size: cover;
+  /* background: url("../img/about-3.png") top center; */
+  /* background-size: cover; */
   position: relative;
 }
 

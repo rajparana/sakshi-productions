@@ -6,7 +6,7 @@
     <main id="main">
 
         <!-- ======= About Section ======= -->
-        <section id="about1" class="about">
+        <section id="about1" class="about d-flex align-items-center justify-content-center" style="background: url('{{ topAbout.image.url }}') center; background-size: cover;">
             <div class="container" data-aos="fade-up">
 
                 <div class="row">
@@ -15,37 +15,7 @@
                 </div> -->
                     <div class="col-lg-12 pt-4 pt-lg-0 order-2 order-lg-1 content px-4" data-aos="fade-bottom"
                         data-aos-delay="299">
-                        <h1 class="text-center">Sakshi Productions</h1><br>
-                        <p class="text-center">
-                            An award-winning Wedding Photography and Cinematography Services Company,
-                            We’re based out in Jaipur, Rajasthan and provide our services all over the world.
-                            We specialize in near-to Home local and Destination Weddings.
-                        </p>
-                        <p class="text-center">
-                            Our team of highly passionate and supremely talented photographers curate a journey
-                            so unforgettable that it might be difficult for you to imagine it any other way
-                            and that’s what makes us the Best Wedding Photography Team.
-                            Sakshi Productions’ team of best wedding photographers are experts at wedding photography
-                            and specialize in wedding function photography like Haldi, Mehendi, Sangeet, Pre-Wedding,
-                            Post-Wedding, Short Films
-                            and the list can go on.
-                        </p>
-                        <p class="text-center">
-                            Founded by Pratyaksh Sharma in the year 2019,
-                            Sakshi Productions wasn’t just a hobby for Pratyaksh and Rajneesh.
-                            It was more like a passion project, something that brought them immense happiness and
-                            satisfaction.
-                            We’ve a Superior team of photographers, because team is lead by our best well experienced
-                            Cinematographer Mr. Mahesh Sharma and Photographer Mr. Narendra Sharma.
-                        </p>
-                        <p class="text-center">
-                            They wanted to provide an unmatched wedding photography experience that wouldn’t burn your
-                            pocket.
-                            They looked at things not like outsiders, but like family members, each nuance of the day
-                            captured so beautifully that otherwise would’ve gone unnoticed.
-                        </p>
-
-                        <h5 class="text-center mt-4" style="color: #cccccc;"><span>You Embrace, We Enhance, You Appreciate</span></h5>
+                        <p>{{topAbout.text|safe}}</p>
                     </div>
                 </div>
             </div>
@@ -61,85 +31,45 @@
                 </div>
 
                 <div class="row">
-
+                    {% for expertise in expertises %}
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
                         <div class="member" data-aos="fade-up" data-aos-delay="200">
                             <div class="member-img">
-                                <img src="{% static 'img/team/pratyaksh-sharma.png' %}" class="img-fluid" alt="">
+                                <div class="position-relative h-100">
+                                    <img src="{{expertise.image.url}}" class="img-fluid w-100 h-100" style="object-fit: cover; min-height: 300px;" alt="">
+                                </div>
                                 <div class="social">
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                    {% if expertise.instagram%}
+                                    <a href="{{expertise.instagram}}"><i class="bi bi-instagram"></i></a>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if expertise.facebook%}
+                                    <a href="{{expertise.facebook}}"><i class="bi bi-facebook"></i></a>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if expertise.twitter%}
+                                    <a href="{{expertise.twitter}}"><i class="bi bi-twitter"></i></a>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if expertise.linkedin%}
+                                    <a href="{{expertise.linkedin}}"><i class="bi bi-linkedin"></i></a>
+                                    {% else %}
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="member-info">
-                                <h4>Pratyaksh Sharma</h4>
-                                <span>Founder</span>
+                                <h4>{{expertise.name}}</h4>
+                                <span>{{expertise.designation}}</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="100">
-                            <div class="member-img">
-                                <img src="{% static 'img/team/rajneesh-sharma.png' %}" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Rajneesh Sharma</h4>
-                                <span>Chief Executive Officer</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="300">
-                            <div class="member-img">
-                                <img src="{% static 'img/team/mahesh-sharma.png' %}" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Mahesh Sharma</h4>
-                                <span>Senior Videographer</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="400">
-                            <div class="member-img">
-                                <img src="{% static 'img/team/narendra-sharma.png' %}" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Narendra Sharma</h4>
-                                <span>Senior Photographer</span>
-                            </div>
-                        </div>
-                    </div>
-
+                    {% endfor %}
                 </div>
 
             </div>
         </section><!-- End Team Section -->
 
-        <section id="about2" class="about">
+        <section id="about2" class="about d-flex align-items-center justify-content-center" style="background: url('{{ midAbout.image.url }}') center; background-size: cover;">
             <div class="container" data-aos="fade-up">
 
                 <div class="row">
@@ -149,32 +79,7 @@
                     <!-- <div class="col-lg-1"></div> -->
                     <div class="col-lg-12 pt-4 pt-lg-6 order-2 order-lg-1 content px-4" data-aos="fade-bottom"
                         data-aos-delay="299">
-                        <h4 class="text-center mb-3"><span>Why We ???</span></h4>
-                        <p class="text-center">
-                            Photography, many can do but breathtaking Wedding Photography is best left to the experts,
-                            by that we mean Sakshi Productions.
-                        </p>
-                        <p class="text-center">
-                            If you want the Best Wedding Photographers and Cinematographers to capture your big
-                            beautiful
-                            Wedding moments, then call us.<br>
-                            If you’re looking to work with only the most sought after and the best Candid Photographers
-                            on
-                            your special day, speak with us.<br>
-                            If you want your Wedding Photographs to go viral just like the Celebrities Wedding, then
-                            reach
-                            us. <br>
-                            If you want your Wedding Pictures to look like a Royal Dream weaved by Billionaire's, book
-                            us.
-                            <br>
-                            Lastly, If you want memories of your Destination Wedding to be captured with such brilliance
-                            that you get teleported to that time and place whenever you go through your Wedding Album,
-                            then
-                            you need to hire us.
-                        </p>
-                        <p class="text-center">
-                            For anything else or mediocre, you can always try someone else !!!
-                        </p>
+                        <p>{{midAbout.text|safe}}</p>
                     </div>
                 </div>
             </div>
@@ -190,72 +95,21 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                    {% for service in services %}
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box">
-                            <div class="icon"><i class="bi bi-arrow-through-heart"></i></div>
-                            <h4><a href="">Wedding</a></h4>
-                            <p>Pre-Wedding, Lipd-Up, Highlights, candid, cinematic, traditional, sangeet, ring
-                                ceremoney,
-                                haldi, mehandi, sagaai, etc</p>
+                            <div class="icon"><i class="{{service.icon}}"></i></div>
+                            <h4><a href="">{{service.title}}</a></h4>
+                            <p>{{service.text}}</p>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                        data-aos-delay="200">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-person-video3"></i></div>
-                            <h4><a href="">Corporate</a></h4>
-                            <p>Conference, meetings, product launch, brand promotions, advertisment, concerts, annual
-                                celebration, fest etc</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-                        data-aos-delay="300">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-slideshow"></i></div>
-                            <h4><a href="">Anniversary</a></h4>
-                            <p>birthday, party, roka, post wedding, Lipd-Up, inogration, baby shower, festival
-                                celebration
-                                etc</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in"
-                        data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-music-note-beamed"></i></div>
-                            <h4><a href="">Albums & Songs</a></h4>
-                            <p>songs, Albums, orignals and retake/cover etc</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in"
-                        data-aos-delay="200">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-film"></i></div>
-                            <h4><a href="">Short Films</a></h4>
-                            <p>short movies, message clips, motivatinal films, promotinal films, advertisment, product
-                                films
-                                etc</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in"
-                        data-aos-delay="300">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-postcard-heart"></i></div>
-                            <h4><a href="">Making & Exposing</a></h4>
-                            <p>editing, exposing, making and designing etc</p>
-                        </div>
-                    </div>
-
+                    {% endfor %}
                 </div>
 
             </div>
         </section><!-- End Services Section -->
 
-        <section id="about3" class="about">
+        <section id="about3" class="about d-flex align-items-center justify-content-center" style="background: url('{{ bottomAbout.image.url }}') center; background-size: cover;">
             <div class="container" data-aos="fade-up">
 
                 <div class="row">
@@ -265,76 +119,7 @@
                     <!-- <div class="col-lg-1"></div> -->
                     <div class="col-lg-12 pt-4 pt-lg-6 order-2 order-lg-1 content px-4" data-aos="fade-bottom"
                         data-aos-delay="299">
-                        <h4 class="text-center mb-4"><span>The Best Wedding Photography Team</span></h4>
-                        <p class="text-center">
-                            Weddings are our passion. We’re here to tell your story.
-                            Sakshi Productions captures Wedding emotions, Candid moments and Photographs, different from
-                            a
-                            Traditional Wedding Photography style.
-                            We are a team of Best Wedding Photographers, Videographers, Cinematographers & Graphic
-                            Designers
-                            based in the heart of Rajasthan (Pink-City, Jaipur).
-                        </p>
-                        <p class="text-center">
-                            Here are just some of the reasons why we’re the Best Wedding Photographers
-                        </p>
-                        <p class="text-center">
-                            <span>A brand that you can trust</span>
-                        </p>
-                        <p class="text-center">
-                            Sakshi Productions has been synonymous with the best Wedding Photographers in Jaipur since
-                            its
-                            inception.
-                            Over the years, we at Sakshi Productions have built a reputation of offering our clients
-                            high
-                            quality, world-class and contemporary Wedding Photography.
-                        </p>
-                        <p class="text-center">
-                            <span>All your functions are special for us</span>
-                        </p>
-                        <p class="text-center">
-                            As they say, Weddings in India are a long affair and one can never get enough of them.
-                            As the Best Wedding Photographers in Jaipur, we provide you with the complete solution for
-                            all
-                            your Photography needs.
-                            We offer end to end services starting from the first day of your Pre-Wedding Shoot, Sangeet
-                            Photography, Haldi Ceremony, Mehandi Function, and the Big Wedding Day.
-                            Our Wedding Photography team has many Years of Experience in Wedding Photography which makes
-                            us
-                            a one-stop-shop for all Wedding Photography needs.
-                        </p>
-                        <p class="text-center">
-                            <span>Lastly here’s a secret we aren’t really Photographers, we’re Magicians only our wand
-                                is
-                                our Camera</span>
-                        </p>
-                        <p class="text-center">
-                            It can be a very hectic experience for any Bride and Groom to plan for their Wedding.
-                            From Retrospectively going back in time and planning your Dream Wedding, to making
-                            arrangements
-                            for the wedding day, you have so much on your plate.
-                            Amidst all this Chaos, every Bride and Groom strive for one thing: To Capture the most
-                            Heartfelt
-                            and Candid Moments of their big day.
-                            They want to Capture all the right moments of their special day, so they don’t miss out on
-                            an
-                            opportunity.
-                            It’s important to hire the best team of Photographers who are able to not only capture your
-                            big
-                            day but create some magic with their lenses.
-                        </p>
-                        <p class="text-center">
-                            Wedding Photography is a very quirky field and you know the fact that it’s not only about
-                            capturing the Wedding Moments but also about creating those beautiful memories through those
-                            pictures.
-                            Our team of Photographers are trained to make your day as memorable as it can be. We provide
-                            Wedding Photography services in Jaipur, Udaipur, Delhi, Gujrat, Goa and in fact, we’d even
-                            go
-                            <span>" 7 Sea Away "</span> too just for you.
-                        </p>
-                        <p class="text-center">
-                            Let us take you through some of our favourite Wedding Photographs taken over the years…
-                        </p>
+                        <p>{{bottomAbout.text|safe}}</p>
                     </div>
                 </div>
 
@@ -347,7 +132,7 @@
 
                 <div class="row no-gutters">
                     <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"
-                        data-aos="fade-right" data-aos-delay="100"></div>
+                        data-aos="fade-right" data-aos-delay="100" style="background: url('{{ aboutQuote.image.url }}') center; background-size: cover;"></div>
                     <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left"
                         data-aos-delay="100">
                         <div class="content d-flex flex-column justify-content-center">
