@@ -27,6 +27,9 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+    
+    class Meta:
+        verbose_name_plural = "01. Users"
 
 
 class Category(models.Model):
@@ -42,6 +45,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = "02. Categories"
 
 
 class Post(models.Model):
@@ -72,6 +78,9 @@ class Post(models.Model):
         if self.thumbnail:
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.thumbnail.url))
         return ""
+
+    class Meta:
+        verbose_name_plural = "03. Posts"
 
 
 class Album(models.Model):
@@ -109,6 +118,9 @@ class Album(models.Model):
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.album.url))
         return ""
 
+    class Meta:
+        verbose_name_plural = "04. Album"
+
 
 class TopQuote(models.Model):
     image = models.ImageField(upload_to='top-quote/', blank=True, null=True)
@@ -129,6 +141,9 @@ class TopQuote(models.Model):
         if self.image:
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
         return ""
+    
+    class Meta:
+        verbose_name_plural = "05. Top Quote (Home)"
 
 
 class BottomQuote(models.Model):
@@ -151,6 +166,9 @@ class BottomQuote(models.Model):
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
         return ""
 
+    class Meta:
+        verbose_name_plural = "06. Bottom Quote (Home)"
+
 
 class CollageCrousel(models.Model):
     image = models.ImageField(upload_to='collage-crousel/', blank=True, null=True)
@@ -171,6 +189,9 @@ class CollageCrousel(models.Model):
         if self.image:
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
         return ""
+
+    class Meta:
+        verbose_name_plural = "07. Collage Crousel (Home)"
 
 
 class SlideCrousel(models.Model):
@@ -193,6 +214,9 @@ class SlideCrousel(models.Model):
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
         return ""
 
+    class Meta:
+        verbose_name_plural = "08. Slide Crousel (Home)"
+
 
 class Reach(models.Model):
     image = models.ImageField(upload_to='reach/', blank=True, null=True)
@@ -214,6 +238,9 @@ class Reach(models.Model):
         if self.image:
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
         return ""
+
+    class Meta:
+        verbose_name_plural = "09. Reach Us (Home)"
 
 
 class Testimonial(models.Model):
@@ -238,6 +265,9 @@ class Testimonial(models.Model):
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
         return ""
 
+    class Meta:
+        verbose_name_plural = "10. Testimonials (Home)"
+
 
 class TopAbout(models.Model):
     image = models.ImageField(upload_to='top-about/', blank=True, null=True)
@@ -258,6 +288,9 @@ class TopAbout(models.Model):
         if self.image:
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
         return ""
+
+    class Meta:
+        verbose_name_plural = "11. Top (About)"
 
 
 class MidAbout(models.Model):
@@ -280,6 +313,9 @@ class MidAbout(models.Model):
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
         return ""
 
+    class Meta:
+        verbose_name_plural = "12. Mid (About)"
+
 
 class BottomAbout(models.Model):
     image = models.ImageField(upload_to='bottom-about/', blank=True, null=True)
@@ -300,6 +336,9 @@ class BottomAbout(models.Model):
         if self.image:
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
         return ""
+
+    class Meta:
+        verbose_name_plural = "13. Bottom (About)"
 
 
 class AboutQuote(models.Model):
@@ -322,6 +361,9 @@ class AboutQuote(models.Model):
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
         return ""
 
+    class Meta:
+        verbose_name_plural = "14. Quote (About)"
+
 
 class Service(models.Model):
     title = models.CharField(max_length=120)
@@ -337,6 +379,9 @@ class Service(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name_plural = "15. Services (About)"
 
 
 class Expertise(models.Model):
@@ -364,6 +409,9 @@ class Expertise(models.Model):
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
         return ""
 
+    class Meta:
+        verbose_name_plural = "16. Expertise (About)"
+
 
 class Contact(models.Model):
     email = models.EmailField()
@@ -387,3 +435,6 @@ class Contact(models.Model):
         if self.image:
             return mark_safe('<img src="{}" width="100" height="80" />'.format(self.image.url))
         return ""
+
+    class Meta:
+        verbose_name_plural = "17. Contact Us"

@@ -30,18 +30,29 @@
                 </iframe>
             </div>
         </div>
-        
+
         <div class="row mt-5 justify-content-center">
             <div class="col-md-12">
                 <p class="text-center" style="word-break: break-all;">{{ post.text|safe|linebreaksbr }}</p>
             </div>
         </div>
     </div>
-    <div class="container mt-5 mb-5">
+    <!-- <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             {% for image in album %}
             <div class="col-4 py-4">
                 <img class="img-fluid" style="object-fit: cover;" src="{{ image.album.url }}" alt="Image">
+            </div>
+            {% endfor %}
+        </div>
+    </div> -->
+    <div class="container">
+        <div class="flexbox-gallery-ul">
+            {% for image in album %}
+            <div class="flexbox-gallery-li">
+                <a href="{{ image.album.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="">
+                    <img class="flexbox-gallery-img" src="{{ image.album.url }}" alt="">
+                </a>
             </div>
             {% endfor %}
         </div>

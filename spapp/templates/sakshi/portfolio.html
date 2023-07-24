@@ -25,31 +25,30 @@
                 <div class="col-lg-12 d-flex justify-content-center">
                     <ul id="portfolio-flters">
                         <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-wedding">Wedding</li>
+                        <!-- <li data-filter=".filter-wedding">Wedding</li>
                         <li data-filter=".filter-pre-wedding">Pre-Wedding</li>
-                        <li data-filter=".filter-corporate">Corporate</li>
+                        <li data-filter=".filter-corporate">Corporate</li> -->
+                        {% for cat in cats %}
+                        <li data-filter=".filter-{{ cat.name }}">{{ cat.name }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
             <hr><br>
 
-            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-                        <img src="{% static 'img/portfolio/portfolio-1.jpg' %}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Wedding 1</h4>
-                            <p>Wedding</p>
-                            <div class="portfolio-links">
-                                <a href="{% static 'img/portfolio/portfolio-1.jpg' %}" data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="Wedding 1"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
+            <div class="portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="portfolio-item flexbox-gallery-ul ">
+                    {% for image in images %}
+                    <div class="flexbox-gallery-li filter-{{ image.category }}">
+                        <a href="{{ image.album.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="">
+                            <img class="flexbox-gallery-img" src="{{ image.album.url }}" alt="">
+                        </a>
                     </div>
+                    {% endfor %}
                 </div>
 
+                
+<!-- 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                     <div class="portfolio-wrap">
                         <img src="{% static 'img/portfolio/portfolio-2.jpg' %}" class="img-fluid" alt="">
@@ -168,7 +167,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
 

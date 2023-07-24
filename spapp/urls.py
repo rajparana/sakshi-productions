@@ -9,9 +9,9 @@ urlpatterns = [
     # path('tag/<str:slug>/', views.tag, name='tag_detail'),
     # path('<slug:slug>/', views.post_detail, name='post_detail'),
 
-    path('user/signup/', views.signup, name='signup'),
-    path('user/login/', views.log_in, name='login'),
-    path('user/logout/', views.log_out, name='logout'),
+    path('admin/signup/', views.signup, name='signup'),
+    path('admin/login/', views.log_in, name='login'),
+    path('admin/logout/', views.log_out, name='logout'),
 
     path('category/<str:slug>/', views.category, name='category_detail'),
     path('postlist/', views.post_list, name='post_list'),

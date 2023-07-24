@@ -1,4 +1,5 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
 from .models import *
 
 class AlbumInline(admin.StackedInline):
@@ -8,7 +9,7 @@ class AlbumInline(admin.StackedInline):
     fieldsets = [
         (None,{'fields':('category', ('album', 'album_preview'))})]
 
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('title', 'category', 'thumbnail_preview', 'destination')
     search_fields = ('title', 'category__name', 'destination', 'text')
     list_filter = ('category__name','destination')
@@ -21,7 +22,7 @@ class PostAdmin(admin.ModelAdmin):
     inlines = [AlbumInline]
 
 
-class AlbumAdmin(admin.ModelAdmin):
+class AlbumAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('post', 'category', 'album_preview','crousel')
     search_fields = ('post', 'category')
     readonly_fields = ['album_preview']
