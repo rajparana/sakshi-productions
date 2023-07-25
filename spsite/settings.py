@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import django-heroku
+import dj_database_url
+From decouple import config
 # from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -48,6 +51,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    ‘whitenoise.middleware.WhiteNoiseMiddleware’,
     'django.contrib.sessions.middleware.SessionMiddleware',
     # 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -177,3 +181,5 @@ CKEDITOR_CONFIGS = {
         'toolbarCanCollapse': False,
 	}
 }
+
+django-heroku.settings(locals))

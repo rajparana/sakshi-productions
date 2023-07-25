@@ -1,1 +1,1 @@
-web: gunicorn spsite.wsgi --log-file -
+web: gunicorn spsite.wsgi -log-file -
