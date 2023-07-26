@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-import django-heroku
-import dj_database_url
-From decouple import config
+# import django-heroku
+# import dj_database_url
+# From decouple import config
 # from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-q7s6n7d_)q3_3199f#ob&-f^-kufqrd8v(n@50$pqi1w1qnqa4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [".vercel.app"]
 
 
 # Application definition
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     # 'whitenoise.middleware.WhiteNoiseMiddleware',
-    ‘whitenoise.middleware.WhiteNoiseMiddleware’,
+    # ‘whitenoise.middleware.WhiteNoiseMiddleware’,
     'django.contrib.sessions.middleware.SessionMiddleware',
     # 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -182,4 +182,4 @@ CKEDITOR_CONFIGS = {
 	}
 }
 
-django-heroku.settings(locals))
+# django-heroku.settings(locals))
