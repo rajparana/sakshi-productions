@@ -1,13 +1,14 @@
 {
-    "builds": [{
-        "src": "spsite/wsgi.py",
-        "use": "@ardnt/vercel-python-wsgi",
-        "config": { "maxLambdaSize": "15mb" }
-    }],
+    "builds": [
+      {
+        "src": "django_app_name/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "spsite/wsgi.py"
-        }
+      {
+        "src": "/(.*)",
+        "dest": "django_app_name/wsgi.py"
+      }
     ]
 }
