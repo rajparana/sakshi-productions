@@ -1,9 +1,4 @@
-/**
-* Template Name: Gp - v4.9.1
-* Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 (function () {
   "use strict";
 
@@ -266,6 +261,10 @@
 
   });
 
+  const postLightbox = GLightbox({
+    selector: '.post-lightbox'
+  });
+
 
   /**
    * Porfolio isotope and filter
@@ -274,7 +273,7 @@
     let portfolioContainer = select('.portfolio-container');
     if (portfolioContainer) {
       let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item'
+        itemSelector: '.flexbox-gallery-li'
       });
 
       let portfolioFilters = select('#portfolio-flters li', true);

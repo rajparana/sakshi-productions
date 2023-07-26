@@ -1172,13 +1172,29 @@ wedding
   font-size: 44px;
   font-weight: 700;
   line-height: 64px;
-  color: #fff;;
-  /* font-family: "Open+Sans", sans-serif; */
+  color: #fff;
 }
 
 #port span {
   color: #ffc451;
 }
+
+.portfolio p a:hover {
+  color: #ffc451;
+}
+.portfolio h2 a {
+  color: #bbbbbb;
+  transition: ease-in-out 0.3s;
+}
+
+.portfolio h2 a:hover {
+  color: #ffc451;
+}
+.portfolio p a{
+  color: #444444;
+  transition: ease-in-out 0.3s;
+}
+
 
 @media (min-width: 1024px) {
   #port {
@@ -2264,7 +2280,7 @@ wedding
 --------------------------------------------------------------*/
 #footer {
   background: black;
-  padding: 0 0 30px 0;
+  /* padding: 0 0 30px 0; */
   color: #fff;
   font-size: 14px;
 }
@@ -2410,4 +2426,66 @@ wedding
   text-align: center;
   font-size: 13px;
   color: #fff;
+}
+
+/* ----------------------------------------------
+flex-box gallery
+------------------------------------------------- */
+/* body{
+  font-family: sans-serif;
+} */
+
+.flexbox-gallery-ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1vmin;
+}
+
+.flexbox-gallery-li {
+  height: 40vh;
+  flex-grow: 1;
+  margin: 1vmin;
+}
+
+.flexbox-gallery-li:last-child {
+  flex-grow: 10;
+}
+
+.flexbox-gallery-img {
+  max-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+  border-radius: 1vmin;
+}
+
+
+@media (max-aspect-ratio: 1/1) {
+  .flexbox-gallery-li {
+    height: 30vh;
+  }
+}
+
+
+@media (max-height: 480px) {
+  .flexbox-gallery-li {
+    height: 80vh;
+  }
+}
+
+
+@media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+  .flexbox-gallery-ul {
+    flex-direction: row;
+  }
+
+  .flexbox-gallery-li {
+    height: auto;
+    width: 100%;
+  }
+  .flexbox-gallery-img {
+    width: 100%;
+    max-height: 75vh;
+    min-width: 0;
+  }
 }

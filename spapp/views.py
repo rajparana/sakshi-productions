@@ -18,6 +18,7 @@ def home(request):
     weddings = Post.objects.filter(category__name='Wedding', published_date__lte=timezone.now(), status='Active').order_by('published_date')
     preWeddings = Post.objects.filter(category__name='Pre-Wedding', published_date__lte=timezone.now(), status='Active').order_by('published_date')
     reach = Reach.objects.filter(status='Active').last()
+    images = Album.objects.filter(status='Active').all()[:15]
     testimonialCover = Testimonial.objects.filter(status='Hidden').last()
     testimonials = Testimonial.objects.filter(status='Active').all()
 
@@ -30,6 +31,7 @@ def home(request):
         'weddings': weddings,
         'preWeddings': preWeddings,
         'reach': reach,
+        'images': images,
         'testimonialCover': testimonialCover,
         'testimonials': testimonials,
         }
@@ -70,10 +72,11 @@ def signup(request):
         last_name = request.POST.get('last_name', None)
         email = request.POST.get('email', None)
         mobile = request.POST.get('mobile', None)
+        code = request.POST.get('code', None)
         password = request.POST.get('password', None)
         cpassword = request.POST.get('cpassword', None)
 
-        if (email is None) or (first_name is None) or (mobile is None) or (password is None) or (cpassword is None):
+        if (email is None) or (first_name is None) or (mobile is None) or (password is None) or (cpassword is None) or (code is None):
             messages.error(request, 'All fields are required')
             return redirect('signup')
 
@@ -83,6 +86,10 @@ def signup(request):
 
         if User.objects.filter(mobile=mobile).first():
             messages.error(request, 'User is exist with this Mobile Number')
+            return redirect('signup')
+
+        if code != 124421:
+            messages.error(request, 'Code is not correct')
             return redirect('signup')
 
         if password != cpassword:
@@ -168,8 +175,9 @@ def category(request, slug):
     return render(request, 'sakshi/category_detail.html', {'cat': cat, 'posts': posts, 'num': posts.count()})
 
 def portfolio(request):
+    images = Album.objects.all()
     cats = Category.objects.all()
-    return render(request, 'sakshi/portfolio.html', {'cats': cats})
+    return render(request, 'sakshi/portfolio.html', {'cats': cats,'images':images})
 
 def contact(request):
     cats = Category.objects.all()
