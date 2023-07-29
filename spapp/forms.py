@@ -3,15 +3,15 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Post, User, Category
 
-categories = Category.objects.all().values_list('name','name') 
-category_list = []
-for category in categories:
-    category_list.append(category)
+# categories = Category.objects.all().values_list('name','name') 
+# category_list = []
+# for category in categories:
+#     category_list.append(category)
 
-users = User.objects.all().values_list('first_name','first_name')
-user_list = []
-for user in users:
-    user_list.append(user)
+# users = User.objects.all().values_list('first_name','first_name')
+# user_list = []
+# for user in users:
+#     user_list.append(user)
 
 class PostForm(forms.ModelForm):
 
